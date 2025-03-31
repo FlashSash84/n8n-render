@@ -1,11 +1,13 @@
 # An excerpt from render.yaml
 services:
   - type: web
-    plan: free
-    runtime: image
     name: n8n-service
-    image:
-      url: docker.io/n8nio/n8n:latest
+    env: docker
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME  # <-- Replace with your actual repo
+    branch: main
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
     envVars:
       - key: DB_TYPE
         value: postgres
