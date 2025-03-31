@@ -3,11 +3,10 @@ services:
   - type: web
     name: n8n-service
     env: docker
-    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME  # <-- Replace with your actual repo
+    repo: https://github.com/FlashSash84/n8n-render
     branch: main
+    dockerfilePath: ./Dockerfile   # <- Make sure this matches the actual path
     plan: free
-    dockerfilePath: ./Dockerfile
-    healthCheckPath: /
     envVars:
       - key: DB_TYPE
         value: postgres
