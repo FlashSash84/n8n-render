@@ -8,11 +8,6 @@
 # increase resources.
 
 services:
-  - type: web
-    plan: free
-    # This is the runtime for services that pull a prebuilt Docker image
-    runtime: image
-    # You can give the service any name
     name: n8n-service
     image:
       # Pulls the n8n image tagged as latest from Docker Hub
@@ -22,36 +17,20 @@ services:
     #
     # You can define additional environment variables as needed.
     envVars:
-      # Generates a base64-encoded key for
-      # encrypting credentials in n8n
-      #
-      # Do not modify this value after it's generated!
-      # If you do, you'll lose access to all credentials
-      # encrypted with the previous value.
-      - key: N8N_ENCRYPTION_KEY
-        generateValue: true
-
-      # These automatically populate connection details 
-      # for the Render Postgres database defined below
-      - key: DB_TYPE
-        value: postgresdb
-      - key: DB_POSTGRESDB_DATABASE
-        fromDatabase:
-          name: n8n-db
-          property: database
-      - key: DB_POSTGRESDB_HOST
-        fromDatabase:
-          name: n8n-db
-          property: host
-      - key: DB_POSTGRESDB_PASSWORD
-        fromDatabase:
-          name: n8n-db
-          property: password
-      - key: DB_POSTGRESDB_USER
-        fromDatabase:
-          name: n8n-db
-          property: user
-
+  - key: DB_TYPE
+    value: postgres
+  - key: DB_POSTGRESDB_HOST
+    value: <dpg-cvl846fgi27c73dlbms0-a>.render.com
+  - key: DB_POSTGRESDB_PORT
+    value: 5432
+  - key: DB_POSTGRESDB_DATABASE
+    value: <n8n_free>
+  - key: DB_POSTGRESDB_USER
+    value: <n8n_free_user>
+    - key: DB_POSTGRESDB_PASSWORD
+    sync: false
+  - key: GENERIC_TIMEZONE
+    value: Europe/Berlin
 databases:
   - name: n8n-db
     plan: free
