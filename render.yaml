@@ -1,10 +1,10 @@
 # Use this Blueprint to deploy n8n on Render as a web
-# service that uses a Postgres database to store
-# workflow data.
+# service that uses a Postgres database to store workflow data.
 
 services:
   - type: web
     name: n8n-service
+    runtime: docker  # 💥 This line fixes the error
     image:
       url: docker.io/n8nio/n8n:latest
 
@@ -25,9 +25,3 @@ services:
         value: Europe/Berlin
 
     plan: free  # Tells Render to use the free tier
-
-# OPTIONAL: Remove the block below if you already have a PostgreSQL database created in Render
-# databases:
-#   - name: n8n-db
-#     plan: free
-#     # diskSizeGB: 5
