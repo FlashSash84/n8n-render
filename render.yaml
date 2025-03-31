@@ -16,7 +16,7 @@ services:
       - key: DB_POSTGRESDB_HOST
         value: dpg-cvl846fgi27c73dlbms0-a.render.com
       - key: DB_POSTGRESDB_PORT
-        value: 5432
+        value: "5432"
       - key: DB_POSTGRESDB_DATABASE
         value: n8n_free
       - key: DB_POSTGRESDB_USER
