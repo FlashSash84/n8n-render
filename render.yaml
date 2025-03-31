@@ -20,4 +20,3 @@ services:
         sync: false
       - key: GENERIC_TIMEZONE
         value: Europe/Berlin
-    startCommand: n8n start --port $PORT
